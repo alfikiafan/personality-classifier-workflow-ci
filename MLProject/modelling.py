@@ -21,8 +21,10 @@ mlflow.set_experiment(exp_id)
 print(f"Using experiment ID: {exp_id}")
 
 def load_data():
-    train = pd.read_csv('personality_dataset_preprocessing/train_data.csv')
-    test = pd.read_csv('personality_dataset_preprocessing/test_data.csv')
+    train_path = os.path.join(base_dir, 'personality_dataset_preprocessing', 'train_data.csv')
+    test_path = os.path.join(base_dir, 'personality_dataset_preprocessing', 'test_data.csv')
+    train = pd.read_csv(train_path)
+    test = pd.read_csv(test_path)
     X_train = train.drop('Personality', axis=1)
     y_train = train['Personality']
     X_test = test.drop('Personality', axis=1)
