@@ -45,12 +45,11 @@ jobs:
         run: |
           echo "Already installed earlier."
 
-      - name: Upload to GitHub artifacts
+      - name: Upload MLflow Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: mlflow-artifacts
-          path: |
-            **/mlruns/**/artifacts/**
+          path: downloaded_artifacts/
 
       - name: Build Docker Model
         run: |
@@ -70,15 +69,3 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/personality-classifier:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/personality-classifier:${{ github.sha }}
-
-      - name: Post Log in to Docker Hub
-        run: echo "Post login step"
-
-      - name: Post Set up Python 3.12.7
-        run: echo "Post setup python step"
-
-      - name: Post Run actions/checkout@v3
-        run: echo "Post checkout step"
-
-      - name: Complete job
-        run: echo "Job complete"
