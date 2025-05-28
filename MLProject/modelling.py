@@ -6,15 +6,18 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import json
-import joblib
-import shap
+import argparse
 
 os.environ['MLFLOW_TRACKING_URI'] = os.getenv('MLFLOW_TRACKING_URI')
 os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('MLFLOW_TRACKING_USERNAME')
 os.environ['MLFLOW_TRACKING_PASSWORD'] = os.getenv('MLFLOW_TRACKING_PASSWORD')
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--experiment_name", type=str, default="random_forest_personality")
+args = parser.parse_args()
+
 mlflow.set_tracking_uri(os.environ['MLFLOW_TRACKING_URI'])
-mlflow.set_experiment("random_forest_personality")
+mlflow.set_experiment(args.experiment_name)
 
 def load_data():
     train = pd.read_csv('personality_dataset_preprocessing/train_data.csv')

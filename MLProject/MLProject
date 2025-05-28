@@ -4,5 +4,6 @@ conda_env: conda.yaml
 
 entry_points:
   main:
-    parameters: {}
-    command: "python modelling.py"
+    parameters:
+      experiment_name: {type: str, default: "random_forest_personality"}
+    command: "python modelling.py --experiment_name {experiment_name}"
