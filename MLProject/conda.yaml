@@ -3,12 +3,12 @@ channels:
   - defaults
   - conda-forge
 dependencies:
-  - python=3.12
+  - python=3.12.7
   - pip
   - pip:
       - mlflow
-      - scikit-learn
       - pandas
+      - scikit-learn
       - matplotlib
       - seaborn
       - shap
