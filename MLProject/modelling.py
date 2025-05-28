@@ -1,4 +1,5 @@
 import mlflow
+from mlflow.tracking import MlflowClient
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, roc_curve, roc_auc_score
@@ -9,6 +10,7 @@ import json
 import joblib
 import platform
 import sys
+import shutil
 
 os.environ['MLFLOW_TRACKING_URI'] = os.getenv('MLFLOW_TRACKING_URI')
 os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('MLFLOW_TRACKING_USERNAME')
@@ -149,6 +151,16 @@ def train_and_log():
         mlflow.log_artifact("artifacts/environment_info.json")
 
         print("Training completed. All metrics and artifacts are logged.")
+
+        local_download_dir = "downloaded_artifacts"
+        shutil.rmtree(local_download_dir, ignore_errors=True)
+        os.makedirs(local_download_dir, exist_ok=True)
+
+        client = MlflowClient()
+        artifacts = client.list_artifacts(run.info.run_id)
+        for artifact in artifacts:
+            client.download_artifacts(run.info.run_id, artifact.path, local_download_dir)
+        print(f"All artifacts downloaded to: {local_download_dir}")
 
 if __name__ == "__main__":
     train_and_log()
