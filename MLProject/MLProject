@@ -1,7 +1,8 @@
-name: workflow-ci
+name: random_forest_personality
 
 conda_env: conda.yaml
 
 entry_points:
   main:
+    parameters: {}
     command: "python modelling.py"

@@ -1,14 +1,14 @@
 name: workflow-ci-env
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
 dependencies:
-  - python=3.12.7
+  - python=3.12
   - pip
   - pip:
-      - mlflow
-      - scikit-learn
       - pandas
+      - scikit-learn
+      - mlflow
       - matplotlib
       - seaborn
       - shap
