@@ -12,7 +12,13 @@ os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('MLFLOW_TRACKING_USERNAME')
 os.environ['MLFLOW_TRACKING_PASSWORD'] = os.getenv('MLFLOW_TRACKING_PASSWORD')
 
 mlflow.set_tracking_uri(os.environ['MLFLOW_TRACKING_URI'])
-mlflow.set_experiment("random_forest_personality")
+exp = mlflow.get_experiment_by_name("random_forest_personality")
+if exp is None:
+    exp_id = mlflow.create_experiment("random_forest_personality")
+else:
+    exp_id = exp.experiment_id
+mlflow.set_experiment(exp_id)
+print(f"Using experiment ID: {exp_id}")
 
 def load_data():
     train = pd.read_csv('personality_dataset_preprocessing/train_data.csv')
