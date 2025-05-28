@@ -3,7 +3,7 @@ name: Workflow CI
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
