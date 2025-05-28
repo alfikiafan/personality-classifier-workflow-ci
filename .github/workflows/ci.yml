@@ -30,7 +30,7 @@ jobs:
 
       - name: Run mlflow project
         run: |
-          mlflow run MLProject -P train_data_path=MLProject/personality_dataset_preprocessing/train_data.csv -P test_data_path=MLProject/personality_dataset_preprocessing/test_data.csv
+          python MLProject/modelling.py
 
       - name: Get latest MLflow run_id
         id: get_run_id

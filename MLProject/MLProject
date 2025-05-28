@@ -4,7 +4,5 @@ conda_env: conda.yaml
 
 entry_points:
   main:
-    parameters:
-      train_data_path: {type: str, default: "personality_dataset_preprocessing/train_data.csv"}
-      test_data_path: {type: str, default: "personality_dataset_preprocessing/test_data.csv"}
+    parameters: []
     command: "python modelling.py"
