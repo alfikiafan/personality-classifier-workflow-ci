@@ -21,6 +21,7 @@ mlflow.set_experiment(exp_id)
 print(f"Using experiment ID: {exp_id}")
 
 def load_data():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     train_path = os.path.join(base_dir, 'personality_dataset_preprocessing', 'train_data.csv')
     test_path = os.path.join(base_dir, 'personality_dataset_preprocessing', 'test_data.csv')
     train = pd.read_csv(train_path)
