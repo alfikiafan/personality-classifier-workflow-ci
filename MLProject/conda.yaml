@@ -1,4 +1,4 @@
-name: workflow-ci-env
+name: personality-classifier-env
 channels:
   - defaults
   - conda-forge
@@ -6,9 +6,9 @@ dependencies:
   - python=3.12
   - pip
   - pip:
-      - pandas
-      - scikit-learn
       - mlflow
+      - scikit-learn
+      - pandas
       - matplotlib
       - seaborn
       - shap

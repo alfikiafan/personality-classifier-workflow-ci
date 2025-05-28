@@ -1,9 +1,7 @@
-name: random_forest_personality
+name: personality-classifier
 
 conda_env: conda.yaml
 
 entry_points:
   main:
-    parameters:
-      experiment_name: {type: str, default: "random_forest_personality"}
-    command: "python modelling.py --experiment_name {experiment_name}"
+    command: "python modelling.py"
