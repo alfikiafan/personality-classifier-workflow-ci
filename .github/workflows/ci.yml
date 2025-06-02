@@ -30,7 +30,7 @@ jobs:
 
       - name: Run mlflow project
         run: |
-          mlflow run MLproject
+          mlflow run ./MLProject
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
