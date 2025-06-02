@@ -17,13 +17,6 @@ os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('MLFLOW_TRACKING_USERNAME')
 os.environ['MLFLOW_TRACKING_PASSWORD'] = os.getenv('MLFLOW_TRACKING_PASSWORD')
 
 mlflow.set_tracking_uri(os.environ['MLFLOW_TRACKING_URI'])
-exp = mlflow.get_experiment_by_name("random_forest_personality")
-if exp is None or exp.lifecycle_stage == 'deleted':
-    exp_id = mlflow.create_experiment("cc")
-else:
-    exp_id = exp.experiment_id
-mlflow.set_experiment(exp_id)
-print(f"Using experiment ID: {exp_id}")
 
 def load_data():
     base_dir = os.path.dirname(os.path.abspath(__file__))
