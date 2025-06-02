@@ -30,6 +30,7 @@ jobs:
 
       - name: Run mlflow project
         run: |
+          source ~/miniconda3/etc/profile.d/conda.sh
           mlflow run ./MLProject --experiment-id "2"
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
