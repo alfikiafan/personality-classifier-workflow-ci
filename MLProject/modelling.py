@@ -69,7 +69,7 @@ def train_and_log():
         'random_state': 42,
         'min_samples_split': 5,
         'min_samples_leaf': 2
-    }
+    } # Hasil dari hyperparameter tuning
 
     with mlflow.start_run(run_name="RF_best_manual") as run:
         model = RandomForestClassifier(**params)
