@@ -30,16 +30,17 @@ jobs:
             bash miniconda.sh -b -p $HOME/miniconda3
             rm miniconda.sh
           fi
-          
-          export PATH="$HOME/miniconda3/bin:$PATH"
 
           python -m pip install --upgrade pip
           pip install mlflow pandas scikit-learn matplotlib seaborn shap joblib
 
+          echo "MLFLOW_PATH=$(which mlflow)" >> $GITHUB_ENV
+
       - name: Run mlflow project
         run: |
-          source ~/miniconda3/etc/profile.d/conda.sh
-          mlflow run ./MLProject --experiment-id "2"
+          source ~/miniconda3/etc/profile.d/conda.sh || true
+          
+          $MLFLOW_PATH run ./MLProject --experiment-id "2"
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_TRACKING_USERNAME: ${{ secrets.MLFLOW_TRACKING_USERNAME }}
